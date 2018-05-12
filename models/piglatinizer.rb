@@ -7,7 +7,7 @@ class PigLatinizer
   end
 
 
-  def pigger(word)
+  def piglatinize(word)
     vowels = 'aeiouAEIOU'
     new_word = word.downcase
 
@@ -36,7 +36,7 @@ class PigLatinizer
     arr = @text.split(' ')
 
     arr.each do |word|
-      new_arr << pigger(word)
+      new_arr << piglatinize(word)
     end
     new_arr.join(' ')
   end
