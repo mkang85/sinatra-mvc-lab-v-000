@@ -31,11 +31,13 @@ class PigLatinizer
   end
 
   def piglatinizer(text)
+    new_arr = []
     arr = text.split(' ')
 
     arr.each do |word|
-      pigger(word)
+      new_arr << pigger(word)
     end
+    new_arr.join(' ')
   end
 
 end
