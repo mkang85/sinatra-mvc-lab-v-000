@@ -31,8 +31,14 @@ class PigLatinizer
     end
   end
 
-  def piglatinize_sentence(sentence)
-    sentence.split.collect { |word| piglatinize_word(word) }.join(" ")
+  def piglatinizer
+    new_arr = []
+    arr = @text.split(' ')
+
+    arr.each do |word|
+      new_arr << piglatinize(word)
+    end
+    new_arr.join(' ')
   end
 
 end
