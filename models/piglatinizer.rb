@@ -28,6 +28,7 @@ class PigLatinizer
       new_word.slice!(2..-1) + new_word[0,2] + 'ay'
     else
       word.slice!(1..-1) + word[0] + "ay"
+    end
   end
 
   def piglatinizer
