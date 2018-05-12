@@ -8,5 +8,6 @@ class App < Sinatra::Base
   end
 
   post '/' do
+    @string = params['string']
   end
 end
