@@ -1,44 +1,39 @@
 class PigLatinizer
 
-  attr_accessor :text
-
-  def initialize(text)
-    @text = text
+  def piglatinize(input_str)
+    x = (input_str.split(" ").length == 1) ? piglatinize_word(input_str) : piglatinize_sentence(input_str)
+    puts x
+    x
   end
 
+  private
 
-  def piglatinize(word)
-    vowels = 'aeiouAEIOU'
-    new_word = word.downcase
+  def consonant?(char)
+    !char.match(/[aAeEiIoOuU]/)
+  end
 
-    case
-    when vowels.include?(word[0])
-      word + 'way'
-    when new_word[0, 2] == "ch"
-      new_word.slice!(2..-1) + new_word[0,2] + 'ay'
-    when new_word[0, 2] == "sh"
-      new_word.slice!(2..-1) + new_word[0,2] + 'ay'
-    when new_word[0, 2] == "th"
-      new_word.slice!(2..-1) + new_word[0,2] + 'ay'
-    when new_word[0, 2] == "st"
-      new_word.slice!(2..-1) + new_word[0,2] + 'ay'
-    when new_word[0, 2] == "cr"
-      new_word.slice!(2..-1) + new_word[0,2] + 'ay'
-    when new_word[0, 2] == "gl"
-      new_word.slice!(2..-1) + new_word[0,2] + 'ay'
+  def piglatinize_word(word)
+    # word starts with vowel
+    if !consonant?(word[0])
+      word = word + "w"
+    # word starts with 3 consonants
+    elsif consonant?(word[0]) && consonant?(word[1]) && consonant?(word[2])
+      word = word.slice(3..-1) + word.slice(0,3)
+    # word starts with 2 consonants
+    elsif consonant?(word[0]) && consonant?(word[1])
+      word = word.slice(2..-1) + word.slice(0,2)
+    # word starts with 1 consonant
     else
-      word.slice!(1..-1) + word[0] + "ay"
+      word = word.slice(1..-1) + word.slice(0)
     end
+    word << "ay"
   end
 
-  def piglatinizer
-    new_arr = []
-    arr = @text.split(' ')
-
-    arr.each do |word|
-      new_arr << piglatinize(word)
-    end
-    new_arr.join(' ')
+  def piglatinize_sentence(sentence)
+    sentence.split.collect { |word| piglatinize_word(word) }.join(" ")
   end
+
+
+
 
 end
