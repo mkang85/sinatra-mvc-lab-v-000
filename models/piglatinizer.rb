@@ -9,12 +9,14 @@ class PigLatinizer
 
   def pigger(word)
     vowels = 'aeiouAEIOU'
-
+    downed = word.downcase
     case pig
     when vowels.include(word[0])
       word + 'way'
-    when
-      word.slice!(1..-1) + "w" + word[0]
+    when word[0, 2] == "ch"
+
+    else
+      word.slice!(1..-1) + word[0] + "ay"
   end
 
   def piglatinizer(text)
