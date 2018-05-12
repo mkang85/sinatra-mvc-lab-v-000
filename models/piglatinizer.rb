@@ -11,8 +11,8 @@ class PigLatinizer
     vowels = 'aeiouAEIOU'
     new_word = word.downcase
 
-    case 
-    when vowels.include(word[0])
+    case
+    when vowels.include?(word[0])
       word + 'way'
     when new_word[0, 2] == "ch"
       new_word.slice!(2..-1) + new_word[0,2] + 'ay'
