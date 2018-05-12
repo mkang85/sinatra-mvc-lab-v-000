@@ -8,7 +8,7 @@ class App < Sinatra::Base
   end
 
   post '/' do
-    @piggedtext = Piglatiner.new(params['string'])
+    @piggedtext = Piglatiner.new(params[:string])
   end
 
 end
