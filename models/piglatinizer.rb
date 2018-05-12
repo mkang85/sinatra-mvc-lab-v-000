@@ -30,9 +30,9 @@ class PigLatinizer
       word.slice!(1..-1) + word[0] + "ay"
   end
 
-  def piglatinizer(text)
+  def piglatinizer
     new_arr = []
-    arr = text.split(' ')
+    arr = @text.split(' ')
 
     arr.each do |word|
       new_arr << pigger(word)
